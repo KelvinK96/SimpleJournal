@@ -19,15 +19,14 @@ import java.util.List;
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder> {
 
     private List<ListDiary> listDiaries;
-    private Context context;
-    DatabaseHelper databaseHelper;
+    ViewDiaryContent viewDiaryContent;
 
-
-    public DiaryAdapter(List<ListDiary> listDiaries, Context context) {
+    public DiaryAdapter(List<ListDiary> listDiaries, Context context, ViewDiaryContent viewDiaryContent) {
         this.listDiaries = listDiaries;
-        this.context = context;
-
+        Context context_l = context;
+        this.viewDiaryContent = viewDiaryContent;
     }
+
 
     @NonNull
     @Override
@@ -47,7 +46,13 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder> 
 
         holder.textViewTitle.setText(dTitle);
         holder.textViewContent.setText(dContent);
-
+        holder.cardView_d.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewDiaryContent.showSelectedContent();
+//                viewDiaryContent.switchToTodoDetails();
+            }
+        });
     }
 
     @Override
@@ -70,20 +75,4 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder> 
     }
 
 
-    public void viewAll() {
-        SQLiteDatabase database = databaseHelper.getReadableDatabase();
-        String selectQuery = "SELECT * FROM diary_details";
-
-        Cursor cursor = database.rawQuery(selectQuery, null);
-        List<ListDiary> listDiary = new ArrayList<ListDiary>();
-
-        if (cursor.moveToFirst()) {
-            do {
-                listDiary.add(new ListDiary(
-                        cursor.getString(1),    // title
-                        cursor.getString(2)     // content
-                ));
-            } while (cursor.moveToNext());
-        }
-    }
 }

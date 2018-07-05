@@ -47,9 +47,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public Cursor loadData() {
+    public Cursor loadDiary() {
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor res = database.rawQuery(" SELECT * FROM " + DiaryEntry.TABLE_NAME, null);
-        return res;
+        Cursor cursor = database.rawQuery(" SELECT * FROM " + DiaryEntry.TABLE_NAME, null);
+        return cursor;
+    }
+
+    public Cursor loadSelectedContent() {
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM " + DiaryEntry.TABLE_NAME + " WHERE id = ?", null);
+        return cursor;
     }
 }

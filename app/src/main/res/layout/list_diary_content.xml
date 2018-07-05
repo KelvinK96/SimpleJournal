@@ -27,7 +27,8 @@
                 android:layout_marginTop="30dp"
                 android:paddingLeft="20dp"
                 android:text="@string/title"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:paddingStart="20dp" />
 
             <TextView
                 android:id="@+id/tv_content"
@@ -37,13 +38,13 @@
                 android:text="@string/content"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/tv_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/date"
-                android:textSize="16sp" />
+            <!--<TextView-->
+                <!--android:id="@+id/tv_date"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:text="@string/date"-->
+                <!--android:textSize="16sp" />-->
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

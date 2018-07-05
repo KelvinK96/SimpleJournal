@@ -1,8 +1,6 @@
 package com.example.user.simplejournal;
 
-import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -15,7 +13,7 @@ public class InsertDiary extends AppCompatActivity {
 
     DatabaseHelper databaseHelper;
     EditText eTitle, eContent;
-    ImageButton save, delete;
+    ImageButton save, clear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +23,11 @@ public class InsertDiary extends AppCompatActivity {
         eTitle = findViewById(R.id.et_title);
         eContent = findViewById(R.id.et_content);
         save = findViewById(R.id.btn_save);
-        delete = findViewById(R.id.btn_delete);
+        clear = findViewById(R.id.btn_clear);
 
         databaseHelper = new DatabaseHelper(this);
         insertDiary();
+        setClear();
     }
 
     public void insertDiary() {
@@ -38,8 +37,9 @@ public class InsertDiary extends AppCompatActivity {
                 boolean isInserted = databaseHelper.insertData(eTitle.getText().toString(),
                         eContent.getText().toString());
 
-                if (isInserted == true) {
+                if (isInserted) {
                     Toast.makeText(InsertDiary.this, "Data inserted", Toast.LENGTH_LONG).show();
+                    removeDiary();
                 } else {
                     Toast.makeText(InsertDiary.this, "Data isn't inserted", Toast.LENGTH_LONG).show();
                 }
@@ -47,7 +47,20 @@ public class InsertDiary extends AppCompatActivity {
         });
     }
 
-    public void removeDiary(){
+    // clear diary content when clear button is clicked
+    public void setClear() {
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeDiary();
+            }
+        });
+    }
+
+    // method to clear edit text fields
+    public void removeDiary() {
+        eTitle.setText(null);
+        eContent.setText(null);
     }
 
 }

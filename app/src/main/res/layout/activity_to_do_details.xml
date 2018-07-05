@@ -15,12 +15,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/insert"
+            android:text="@string/edit"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
         <EditText
-            android:id="@+id/et_title"
+            android:id="@+id/et_title_e"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -28,7 +28,7 @@
             android:inputType="textEmailAddress" />
 
         <EditText
-            android:id="@+id/et_content"
+            android:id="@+id/et_content_e"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -36,12 +36,12 @@
             android:inputType="textMultiLine" />
 
         <RelativeLayout
-            android:padding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="10dp">
 
             <ImageButton
-                android:id="@+id/btn_clear"
+                android:id="@+id/btn_clear_e"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentEnd="true"
@@ -54,7 +54,7 @@
                 android:text="@string/signup" />
 
             <ImageButton
-                android:id="@+id/btn_save"
+                android:id="@+id/btn_save_e"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"

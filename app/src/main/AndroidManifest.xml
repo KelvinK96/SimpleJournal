@@ -21,7 +21,8 @@
             android:name=".ViewDiaryContent"
             android:label="@string/title_activity_view_diary_content"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".InsertDiary"></activity>
+        <activity android:name=".InsertDiary" />
+        <activity android:name=".ToDoDetails"></activity>
     </application>
 
 </manifest>
